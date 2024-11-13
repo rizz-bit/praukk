@@ -5,7 +5,48 @@
   </title>
   <script src="https://cdn.tailwindcss.com">
   </script>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" rel="stylesheet"/>
+  <style>
+    .modal {
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+ 
+    .modal-hidden {
+      opacity: 0;
+      visibility: hidden;
+    }
+ 
+    .modal-visible {
+      opacity: 1;
+      visibility: visible;
+    }
+   </style>
+   <script>
+    function openModal() {
+      document.getElementById('loginModal').classList.remove('modal-hidden');
+      document.getElementById('loginModal').classList.add('modal-visible');
+    }
+ 
+    function closeModal() {
+      document.getElementById('loginModal').classList.remove('modal-visible');
+      document.getElementById('loginModal').classList.add('modal-hidden');
+    }
+
+    function togglePasswordVisibility() {
+     const passwordInput = document.getElementById('password');
+     const passwordIcon = document.getElementById('passwordIcon');
+     if (passwordInput.type === 'password') {
+       passwordInput.type = 'text';
+       passwordIcon.classList.remove('fa-eye-slash');
+       passwordIcon.classList.add('fa-eye');
+     } else {
+       passwordInput.type = 'password';
+       passwordIcon.classList.remove('fa-eye');
+       passwordIcon.classList.add('fa-eye-slash');
+     }
+   }
+            
+   </script>
  </head>
  <body class="bg-gray-100">
   <div class="flex">
@@ -14,47 +55,55 @@
    <!-- Main Content -->
    <div class="flex-1 p-4">
     <!-- Search Bar -->
-    <div class="flex items-center bg-white p-2 rounded-full shadow-md mb-4">
-     <i class="fas fa-search text-gray-600 ml-2">
-     </i>
-     <input class="ml-2 w-full outline-none" placeholder="Search" type="text"/>
+    <div class="flex items-center bg-gray-200 rounded-full px-4 py-2 mb-4">
+        <i class="fas fa-search text-gray-500"></i>
+        <input type="text" placeholder="Search" class="bg-gray-200 outline-none ml-2 w-full">
     </div>
-    <!-- Pins Grid -->
-    <div class="grid grid-cols-6 gap-4">
-     <div class="bg-white rounded-lg overflow-hidden shadow-md">
-      <img alt="Apple logo with water droplets" class="w-full h-auto" height="300" src="https://storage.googleapis.com/a1aa/image/JB16XfpIBE0kAiOCm7Xmz7uPwTbpePbq8KAWwMDln5Zbl2uTA.jpg" width="200"/>
-     </div>
-     <div class="bg-white rounded-lg overflow-hidden shadow-md">
-      <img alt="It's okay to not be okay text" class="w-full h-auto" height="300" src="https://storage.googleapis.com/a1aa/image/dlvjFsGb9MJ5Lpe2MY52JmMNWfPDexfqyRwTY43HewMWq02dC.jpg" width="200"/>
-     </div>
-     <a href="#" class="bg-white rounded-lg overflow-hidden shadow-md block relative group hover:cursor-pointer">
-      <img alt="Cozy bedroom with green blanket" class="w-full h-auto" height="300" src="https://storage.googleapis.com/a1aa/image/FmKSqyrsn4IkK1qFmYF3D6S0bQGPVzobxktA4EtS3OUVpt7E.jpg" width="200"/>
-      <button class="opacity-0 group-hover:opacity-100 absolute top-2 right-2 bg-red-600 text-white text-xs px-2 py-1 rounded-full transition-opacity duration-150 ease-in-out">
-       Save
-      </button>
-     </a>
-     <div class="bg-white rounded-lg overflow-hidden shadow-md">
-      <img alt="Cherry pattern" class="w-full h-auto" height="300" src="https://storage.googleapis.com/a1aa/image/gne7RpJQ9LXMQas98pfqHLGemGDcMI0nX4LQKJoiqjc1KtdnA.jpg" width="200"/>
-     </div>
-     <div class="bg-white rounded-lg overflow-hidden shadow-md">
-      <img alt="Porsche car from top view" class="w-full h-auto" height="300" src="https://storage.googleapis.com/a1aa/image/grv2jn2a4trdCBG5fxkbCgffD1C13pfHYq3QoQeIc5TAq02dC.jpg" width="200"/>
-     </div>
-     <div class="bg-white rounded-lg overflow-hidden shadow-md">
-      <img alt="Palm tree and blue sky" class="w-full h-auto" height="300" src="https://storage.googleapis.com/a1aa/image/BEeEZsTwKoy7cCFSbpUA3LjhfxsSxQSyNNQz0R5w6vudl2uTA.jpg" width="200"/>
-     </div>
-     <div class="bg-white rounded-lg overflow-hidden shadow-md">
-      <img alt="Arabic text" class="w-full h-auto" height="300" src="https://storage.googleapis.com/a1aa/image/eY21kUfqtIrFcUPx7VcdcLh7sxk4TxstFqGTQFh8w79fKtdnA.jpg" width="200"/>
-     </div>
-     <div class="bg-white rounded-lg overflow-hidden shadow-md">
-      <img alt="Spiderman comic cover" class="w-full h-auto" height="300" src="https://storage.googleapis.com/a1aa/image/oolFHlJD4xqdPJtPctfUzAhIkGt3ToVfrQwkdjZ3LEFTl2uTA.jpg" width="200"/>
-     </div>
-     <div class="bg-white rounded-lg overflow-hidden shadow-md">
-      <img alt="Vintage camera and flowers" class="w-full h-auto" height="300" src="https://storage.googleapis.com/a1aa/image/eawFETe1VBmc2ELxyciXb4J62ViKIswUdvlv15FHlRwXl2uTA.jpg" width="200"/>
-     </div>
-    </div>
-   </div>
+    
+    @yield('content')
+    
+    @include('partials.sidebar_right')
    <!-- User Profile -->
-   @include('partials.sidebar_right')
   </div>
+@include('auth.login')
+ 
  </body>
+ <script>
+    function handleFileSelect(event) {
+        const fileInput = event.target;
+        const file = fileInput.files[0];
+        const fileName = file.name;
+        document.getElementById('fileName').textContent = fileName;
+
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            const previewImage = document.getElementById('previewImage');
+            previewImage.src = e.target.result;
+            previewImage.classList.remove('hidden');
+        };
+        reader.readAsDataURL(file);
+    }
+
+    const dropZone = document.getElementById('dropZone');
+
+    dropZone.addEventListener('dragover', (event) => {
+        event.preventDefault();
+        dropZone.classList.add('bg-gray-200');
+    });
+
+    dropZone.addEventListener('dragleave', () => {
+        dropZone.classList.remove('bg-gray-200');
+    });
+
+    dropZone.addEventListener('drop', (event) => {
+        event.preventDefault();
+        dropZone.classList.remove('bg-gray-200');
+        const files = event.dataTransfer.files;
+        if (files.length > 0) {
+            document.getElementById('fileInput').files = files;
+            handleFileSelect({ target: { files: files } });
+        }
+    });
+</script>
 </html>
+

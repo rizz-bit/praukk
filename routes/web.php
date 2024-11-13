@@ -22,5 +22,8 @@ Route::get('/register', function () {
 })->name('register');
 
 Route::get('/', function () {
-    return view('main-home.home');
+    return view('maincontain.index');
 });
+Route::get('/add', function () {
+    return view('addimage.index');
+})->name('add');
