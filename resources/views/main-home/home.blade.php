@@ -10,6 +10,25 @@
     .modal {
       transition: opacity 0.3s ease, visibility 0.3s ease;
     }
+
+    .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+            z-index: 50;
+        }
+        .modal-content {
+            background: white;
+            padding: 2rem;
+            border-radius: 0.5rem;
+            position: relative;
+        }
  
     .modal-hidden {
       opacity: 0;
@@ -21,32 +40,38 @@
       visibility: visible;
     }
    </style>
-   <script>
-    function openModal() {
-      document.getElementById('loginModal').classList.remove('modal-hidden');
-      document.getElementById('loginModal').classList.add('modal-visible');
-    }
- 
-    function closeModal() {
-      document.getElementById('loginModal').classList.remove('modal-visible');
-      document.getElementById('loginModal').classList.add('modal-hidden');
-    }
+    <script>
+        // Toggle password visibility
+        function togglePasswordVisibility(passwordFieldId, toggleIconId) {
+            const passwordField = document.getElementById(passwordFieldId);
+            const toggleIcon = document.getElementById(toggleIconId);
+            const type = passwordField.getAttribute('type') === 'password' ? 'text' : 'password';
+            passwordField.setAttribute('type', type);
+            toggleIcon.classList.toggle('fa-eye-slash');
+        }
 
-    function togglePasswordVisibility() {
-     const passwordInput = document.getElementById('password');
-     const passwordIcon = document.getElementById('passwordIcon');
-     if (passwordInput.type === 'password') {
-       passwordInput.type = 'text';
-       passwordIcon.classList.remove('fa-eye-slash');
-       passwordIcon.classList.add('fa-eye');
-     } else {
-       passwordInput.type = 'password';
-       passwordIcon.classList.remove('fa-eye');
-       passwordIcon.classList.add('fa-eye-slash');
-     }
-   }
-            
-   </script>
+        // Show and hide modals
+        function openModal(modalId) {
+            document.getElementById(modalId).style.display = 'flex';
+        }
+
+        function showSignUpModal() {
+            document.getElementById('loginModal').style.display = 'none';
+            document.getElementById('signUpModal').style.display = 'flex';
+        }
+
+        function showLoginModal() {
+            document.getElementById('signUpModal').style.display = 'none';
+            document.getElementById('loginModal').style.display = 'flex';
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+        }
+
+        // Show login modal on page load
+        document.getElementById('loginModal').style.display = 'flex';
+    </script>
  </head>
  <body class="bg-gray-100">
   <div class="flex">
@@ -66,6 +91,7 @@
    <!-- User Profile -->
   </div>
 @include('auth.login')
+@include('auth.signin')
  
  </body>
  <script>

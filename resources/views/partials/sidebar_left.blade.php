@@ -21,7 +21,7 @@
      <i class="fas fa-comment-dots text-gray-600 text-xl">
      </i>
     </a>
-    <button class="mb-4 hover:bg-gray-600/30 rounded p-2" onclick="openModal()">
+    <button class="mb-4 hover:bg-gray-600/30 rounded p-2" onclick="openModal('loginModal')">
         <i class="fa-solid fa-user text-gray-600 text-xl"></i>
     </button>
    </div>

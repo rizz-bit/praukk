@@ -1,32 +1,32 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign Up Page</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-</head>
-<body class="bg-gray-100 flex items-center justify-center h-screen">
-
-    <div class="bg-white p-8 rounded-lg shadow-md w-96">
-        <h2 class="text-2xl font-bold text-center mb-6">Sign Up</h2>
-        <form action="#" method="POST">
+<div class="modal" id="signUpModal">
+    <div class="modal-content w-96">
+        <div class="flex justify-center mb-4">
+            <img alt="Pinterest logo" class="h-10" height="40" src="https://storage.googleapis.com/a1aa/image/eD1qfqsa50rgS0gZ0vbcvmsiPpnJrX6ylcdwdMnUfcnePuBPB.jpg" width="40"/>
+        </div>
+        <h1 class="text-2xl font-semibold text-center mb-6">Sign Up for Pinterest</h1>
+        <form>
             <div class="mb-4">
-                <label for="name" class="block text-sm font-medium text-gray-700">Name</label>
-                <input type="text" id="name" name="name" required class="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-500" placeholder="Your Name">
+                <label class="block text-sm font-medium text-gray-700" for="signupUsername">Username</label>
+                <input class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" id="signupUsername" placeholder="USername" type="text"/>
             </div>
             <div class="mb-4">
-                <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
-                <input type="email" id="email" name="email" required class="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-500" placeholder="you@example.com">
+                <label class="block text-sm font-medium text-gray-700" for="signupEmail">Email</label>
+                <input class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" id="signupEmail" placeholder="Email" type="email"/>
             </div>
-            <div class="mb-6">
-                <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
-                <input type="password" id="password" name="password" required class="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-500" placeholder="********">
+            <div class="mb-4">
+                <label class="block text-sm font-medium text-gray-700" for="signupPassword">Password</label>
+                <div class="relative">
+                    <input class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" id="signupPassword" placeholder="Password" type="password"/>
+                    <i class="fas fa-eye absolute right-3 top-3 text-gray-500 cursor-pointer" id="toggleSignUpPassword" onclick="togglePasswordVisibility('signupPassword', 'toggleSignUpPassword')"></i>
+                </div>
             </div>
-            <button type="submit" class="w-full bg-blue-500 text-white font-semibold py-2 rounded-md hover:bg-blue-600">Sign Up</button>
+            <button class="w-full bg-red-600 text-white py-2 rounded-md text-lg font-semibold mb-4" type="submit">Sign Up</button>
         </form>
-        <p class="mt-4 text-center text-sm text-gray-600">Already have an account? <a href="{{ route('login') }}" class="text-blue-500 hover:underline">Login</a></p>
+        <p class="text-sm text-gray-600 text-center">
+            Already have an account? <a class="text-blue-600 cursor-pointer" id="showLogin" onclick="showLoginModal()">Log in</a>
+        </p>
+        <button class="absolute top-4 right-4 text-gray-500" id="closeSignUpModal" onclick="closeModal('signUpModal')">
+            <i class="fas fa-times"></i>
+        </button>
     </div>
-
-</body>
-</html>
+</div>
