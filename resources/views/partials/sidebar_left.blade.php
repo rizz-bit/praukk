@@ -2,7 +2,7 @@
     <a class="mb-5" href="#">
      <!-- <img alt="Pinterest logo" class="w-6 h-6" height="24" src="https://storage.googleapis.com/a1aa/image/enkfp7dduxsiTEL4yWQMb7LjGpEMV8SxRLCp4moziFMZl2uTA.jpg" width="24"/> -->
     </a>
-    <a class="mb-5 hover:bg-gray-600/30 rounded p-2" href="#">
+    <a class="mb-5 hover:bg-gray-600/30 rounded p-2" href="{{route('home')}}">
      <i class="fas fa-compass text-gray-600 text-xl ">
      </i>
     </a>

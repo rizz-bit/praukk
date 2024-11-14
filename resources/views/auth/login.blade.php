@@ -4,15 +4,16 @@
             <img alt="Pinterest logo" class="h-10" height="40" src="https://storage.googleapis.com/a1aa/image/eD1qfqsa50rgS0gZ0vbcvmsiPpnJrX6ylcdwdMnUfcnePuBPB.jpg" width="40"/>
         </div>
         <h1 class="text-2xl font-semibold text-center mb-6">Welcome to Pinterest</h1>
-        <form>
+        <form action="{{ route('login.post') }}" method="post">
+            @csrf
             <div class="mb-4">
                 <label class="block text-sm font-medium text-gray-700" for="email">Email</label>
-                <input class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" id="email" placeholder="Email" type="email"/>
+                <input name="email" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" id="email" placeholder="Email" type="email"/>
             </div>
             <div class="mb-4">
                 <label class="block text-sm font-medium text-gray-700" for="password">Password</label>
                 <div class="relative">
-                    <input class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" id="password" placeholder="Password" type="password"/>
+                    <input name="password" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" id="password" placeholder="Password" type="password"/>
                     <i class="fas fa-eye absolute right-3 top-3 text-gray-500 cursor-pointer" id="togglePassword" onclick="togglePasswordVisibility('password', 'togglePassword')"></i>
                 </div>
             </div>
@@ -26,9 +27,9 @@
             <span class="mx-2 text-gray-500">OR</span>
             <div class="flex-grow border-t border-gray-300"></div>
         </div>
-        <button class="w-full bg-blue-600 text-white py-2 rounded-md text-lg font-semibold flex items-center justify-center mb-4">
+        {{-- <button class="w-full bg-blue-600 text-white py-2 rounded-md text-lg font-semibold flex items-center justify-center mb-4">
             <i class="fab fa-facebook-f mr-2"></i> Continue with Facebook
-        </button>
+        </button> --}}
         {{-- <button class="w-full bg-white border border-gray-300 text-gray-700 py-2 rounded-md text-lg font-semibold flex items-center justify-center mb-4">
             <img alt="User avatar" class="h-5 w-5 rounded-full mr-2" height="20" src="https://storage.googleapis.com/a1aa/image/e4nasBpVVdUJLSfsvdSAQw6CrWhNkXBxNdvj8MTBNkkAkbwTA.jpg" width="20"/>
             <span class="flex-grow text-left">Continue as 36_rizki</span>

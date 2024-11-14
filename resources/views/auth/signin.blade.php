@@ -4,19 +4,28 @@
             <img alt="Pinterest logo" class="h-10" height="40" src="https://storage.googleapis.com/a1aa/image/eD1qfqsa50rgS0gZ0vbcvmsiPpnJrX6ylcdwdMnUfcnePuBPB.jpg" width="40"/>
         </div>
         <h1 class="text-2xl font-semibold text-center mb-6">Sign Up for Pinterest</h1>
-        <form>
+        <form method="POST" action="{{ route('register.post') }}">
+            @csrf
             <div class="mb-4">
                 <label class="block text-sm font-medium text-gray-700" for="signupUsername">Username</label>
-                <input class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" id="signupUsername" placeholder="USername" type="text"/>
+                <input name="username" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" id="signupUsername" placeholder="Username" type="text"/>
+            </div>
+            <div class="mb-4">
+                <label class="block text-sm font-medium text-gray-700" for="signupUsername">Nama Lengkap</label>
+                <input name="nama_lengkap" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" id="signupUsername" placeholder="Nama Lengkap" type="text"/>
+            </div>
+            <div class="mb-4">
+                <label class="block text-sm font-medium text-gray-700" for="signupUsername">Alamat</label>
+                <input name="alamat" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" id="signupUsername" placeholder="Alamat" type="text"/>
             </div>
             <div class="mb-4">
                 <label class="block text-sm font-medium text-gray-700" for="signupEmail">Email</label>
-                <input class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" id="signupEmail" placeholder="Email" type="email"/>
+                <input name="email" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" id="signupEmail" placeholder="Email" type="email"/>
             </div>
             <div class="mb-4">
                 <label class="block text-sm font-medium text-gray-700" for="signupPassword">Password</label>
                 <div class="relative">
-                    <input class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" id="signupPassword" placeholder="Password" type="password"/>
+                    <input name="password" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" id="signupPassword" placeholder="Password" type="password"/>
                     <i class="fas fa-eye absolute right-3 top-3 text-gray-500 cursor-pointer" id="toggleSignUpPassword" onclick="togglePasswordVisibility('signupPassword', 'toggleSignUpPassword')"></i>
                 </div>
             </div>

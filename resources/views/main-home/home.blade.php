@@ -6,6 +6,7 @@
   <script src="https://cdn.tailwindcss.com">
   </script>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" rel="stylesheet"/>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <style>
     .modal {
       transition: opacity 0.3s ease, visibility 0.3s ease;
@@ -71,6 +72,19 @@
 
         // Show login modal on page load
         document.getElementById('loginModal').style.display = 'flex';
+
+        document.addEventListener("DOMContentLoaded", function() {
+    let modal = @json(session('modal'));
+    console.log("Session modal:", modal); // Debug untuk cek apakah session diterima
+
+    if (modal === 'register') {
+        console.log("Showing register modal"); // Debug tambahan
+        showModal('registerModal');
+    } else if (modal === 'login') {
+        console.log("Showing login modal"); // Debug tambahan
+        showModal('loginModal');
+    }
+});
     </script>
  </head>
  <body class="bg-gray-100">
@@ -130,6 +144,7 @@
             handleFileSelect({ target: { files: files } });
         }
     });
+    
 </script>
 </html>
 
