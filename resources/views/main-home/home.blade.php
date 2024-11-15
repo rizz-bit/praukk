@@ -7,6 +7,9 @@
   </script>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" rel="stylesheet"/>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="//unpkg.com/alpinejs" defer></script>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.1.2/dist/tailwind.min.css" rel="stylesheet">
+
   <style>
     .modal {
       transition: opacity 0.3s ease, visibility 0.3s ease;

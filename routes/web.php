@@ -33,3 +33,5 @@ Route::get('/add', function () {
 Route::post('/login-post', [AuthController::class, 'loginPost'])->name('login.post');
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::post('/register-post', [AuthController::class, 'registerPost'])->name('register.post');
+
+Route::post('/logout',[AuthController::class,'logout'])->name('logout');
