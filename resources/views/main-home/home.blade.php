@@ -45,6 +45,7 @@
     }
    </style>
     <script>
+        
         // Toggle password visibility
         function togglePasswordVisibility(passwordFieldId, toggleIconId) {
             const passwordField = document.getElementById(passwordFieldId);
@@ -111,6 +112,7 @@
 @include('auth.signin')
  
  </body>
+ @stack('scripts')
  <script>
     function handleFileSelect(event) {
         const fileInput = event.target;

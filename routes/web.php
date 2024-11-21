@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -35,3 +36,7 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::post('/register-post', [AuthController::class, 'registerPost'])->name('register.post');
 
 Route::post('/logout',[AuthController::class,'logout'])->name('logout');
+
+Route::get('/profile', [ProfileController::class,'index'])->name('profile');
+Route::get('/profile/{id}/edit', [ProfileController::class,'edit'])->name('profile.edit');
+Route::post('/profile/{id}/update', [ProfileController::class,'update'])->name('profile.update');

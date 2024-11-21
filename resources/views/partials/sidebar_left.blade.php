@@ -40,7 +40,7 @@
              x-transition:leave-start="opacity-100 transform scale-100" 
              x-transition:leave-end="opacity-0 transform scale-95" 
              class="absolute left-12 mt-0 w-48 bg-white border rounded-lg shadow-lg origin-top-left">
-            <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Profile Saya</a>
+            <a href="{{ route('profile')}}" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Profile Saya</a>
             {{-- <button class="block px-4 py-2 text-gray-700 hover:bg-gray-100 w-full ">asdas</button> --}}
             <a href="{{ route('logout') }}" class="block px-4 py-2 text-gray-700 hover:bg-gray-100" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Log Out</a>
             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
