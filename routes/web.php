@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AlbumController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Auth;
@@ -40,3 +41,5 @@ Route::post('/logout',[AuthController::class,'logout'])->name('logout');
 Route::get('/profile', [ProfileController::class,'index'])->name('profile');
 Route::get('/profile/{id}/edit', [ProfileController::class,'edit'])->name('profile.edit');
 Route::post('/profile/{id}/update', [ProfileController::class,'update'])->name('profile.update');
+
+Route::get('/album',[AlbumController::class,'index'])->name('album');

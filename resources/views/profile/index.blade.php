@@ -1,8 +1,9 @@
 @extends('main-home.home')
 @section('content')
+
 <div class="flex-1 flex flex-col items-center">
     <div class="w-24 h-24 text-white flex items-center justify-center text-4xl mb-4">
-     <img src="{{ auth()->user()->profile_picture ? asset('storage/' . auth()->user()->profile_picture) : asset('images/default_pict.jpg') }}" class="rounded-full">
+     <img src="{{ auth()->user()->profile_picture ? asset('images/' . auth()->user()->profile_picture) : asset('images/default_pict.jpg') }}" class="rounded-full">
     </div>
     <div class="text-2xl font-semibold mb-1">
      {{auth()->user()->username}}
@@ -39,3 +40,15 @@
     </div>
    </div>
 @endsection
+@push('scripts')
+@if(@session('success'))
+<script>
+    Swal.fire({
+        title: 'Sukses!',
+        text: "{{ session('success') }}",
+        icon: 'success',
+        confirmButtonText: 'OK'
+    });
+</script>
+@endif
+@endpush

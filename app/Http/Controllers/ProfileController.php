@@ -23,44 +23,40 @@ class ProfileController extends Controller
 
         // dd($request);
         // Validasi input
-        $request->validate([
-            'username' => 'required',
-            'nama_lengkap' => 'required',
-            'email' => 'required',
-            'password' => 'required',
-            'alamat' => 'required',
-            'profile_picture' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-        ]);
+        // $request->validate([
+        //     'username' => 'required',
+        //     'nama_lengkap' => 'required',
+        //     'email' => 'required',
+        //     'password' => 'required',
+        //     'alamat' => 'required',
+        //     'profile_picture' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+        // ]);
 
+        
         $user = User::findOrFail($id);
-
-        // Jika ada foto baru yang diupload, proses upload foto baru
+        // // Jika ada foto baru yang diupload, proses upload foto baru
         if ($request->hasFile('profile_picture')) {
-            // Hapus foto lama jika ada
-            if ($user->profile_picture && file_exists(public_path('storages/' . $user->profile_picture))) {
-                unlink(public_path('storages/' . $user->profile_picture));
-            }
-
+                // Hapus foto lama jika ada
+                if ($user->profile_picture && file_exists(public_path('images/' . $user->profile_picture))) {
+                        unlink(public_path('images/' . $user->profile_picture));
+                    }
+                
             // Upload foto baru
             $profile_pictureName = time() . '.' . $request->profile_picture->extension();
-            $request->profile_picture->move(public_path('storages'), $profile_pictureName);
+            $request->profile_picture->move(public_path('images'), $profile_pictureName);
         } else {
-            // Jika tidak ada foto baru, gunakan foto lama
-            $profile_pictureName = $user->profile_picture;
-        }
-
+                // Jika tidak ada foto baru, gunakan foto lama
+                $profile_pictureName = $user->profile_picture;
+            }
+            
         // Update data user
-        $user->update([
-            'username' => $request->username,
-            'nama_lengkap' => $request->nama_lengkap,
-            'email' => $request->email,
-            'alamat' => $request->alamat,
-            'profile_picture' => $profile_pictureName,
-        ]);
+        $user->update($request->all());
+        $user->profile_picture = $profile_pictureName;
+        $user->save();
 
-        dd($user);
+        // dd($user);
 
-        // return redirect()->route('users.edit', $user->id)->with('success', 'Data berhasil diperbarui!');
+        return redirect()->route('profile')->with('success', 'Data berhasil diperbarui!');
     }
 
     // public function update(Request $request, User $user){

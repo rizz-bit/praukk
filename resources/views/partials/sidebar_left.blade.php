@@ -10,6 +10,9 @@
      <i class="fas fa-plus text-gray-600 text-xl">
      </i>
     </a>
+    <a class="mb-5 hover:bg-gray-600/30 rounded p-2" href="{{route('album')}}">
+     <i class="fa-solid fa-folder text-gray-600 text-xl"></i>
+    </a>
     <a class="relative mb-5 hover:bg-gray-600/30 rounded p-2" href="#">
      <i class="fas fa-bell text-gray-600 text-xl">
      </i>
@@ -25,7 +28,7 @@
     <div class="relative" x-data="{ open: false }">
         <!-- Button -->
         <button @click="open = !open" class="px-4 py-2 rounded focus:outline-none">
-            <img src="{{ auth()->user()->profile_picture ? asset('storage/' . auth()->user()->profile_picture) : asset('images/default_pict.jpg') }}" 
+            <img src="{{ auth()->user()->profile_picture ? asset('images/' . auth()->user()->profile_picture) : asset('images/default_pict.jpg') }}" 
             alt="Foto Profil" 
             class="profile-picture" 
             style="width: 30; height: 30; border-radius: 50%;">
