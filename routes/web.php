@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AddFotoController;
 use App\Http\Controllers\AlbumController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ProfileController;
@@ -28,9 +29,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('maincontain.index');
 })->name('home');
-Route::get('/add', function () {
-    return view('addimage.index');
-})->name('add');
+// Route::get('/add', function () {
+//     return view('addimage.index');
+// })->name('add');
 
 Route::post('/login-post', [AuthController::class, 'loginPost'])->name('login.post');
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
@@ -46,3 +47,5 @@ Route::get('/album',[AlbumController::class,'index'])->name('album');
 
 Route::post('/album/create', [AlbumController::class,'store'])->name('album.create');
 Route::get('/album/{id}', [ProfileController::class, 'album'])->name('album.show');
+
+Route::get('/add/{id}' ,[AddFotoController::class,'index'])->name('add.foto');

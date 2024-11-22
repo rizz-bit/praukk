@@ -6,10 +6,10 @@
      <i class="fas fa-compass text-gray-600 text-xl ">
      </i>
     </a>
-    <a class="mb-5 hover:bg-gray-600/30 rounded p-2" href="{{route('add')}}">
+    {{-- <a class="mb-5 hover:bg-gray-600/30 rounded p-2" href="{{route('add.foto')}}">
      <i class="fas fa-plus text-gray-600 text-xl">
      </i>
-    </a>
+    </a> --}}
     {{-- <a class="mb-5 hover:bg-gray-600/30 rounded p-2" href="{{route('album')}}">
      <i class="fa-solid fa-folder text-gray-600 text-xl"></i>
     </a> --}}

@@ -37,6 +37,15 @@
                         <label class="block text-gray-600">Description</label>
                         <textarea placeholder="Add a detailed description" class="w-full border border-gray-300 rounded-lg p-2 h-24"></textarea>
                     </div>
+                    <div class="mb-4">
+                        <label for="album" class="block text-sm font-medium text-gray-700">Pilih Album</label>
+                        <select name="album_id" id="album" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                            <option value="" disabled selected>Pilih Album</option>
+                            @foreach($albums as $album)
+                                <option value="{{ $album->id }}">{{ $album->nama_album }}</option>
+                            @endforeach
+                        </select>
+                    </div>
                     {{-- <div class="mb-4">
                         <label class="block text-gray-600">Link</label>
                         <input type="text" placeholder="Add a link" class="w-full border border-gray-300 rounded-lg p-2">

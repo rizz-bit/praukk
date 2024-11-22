@@ -2,13 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Album;
 use Illuminate\Http\Request;
 
 class AddFotoController extends Controller
 {
-    public function index()
+    public function index($id)
     {
-        return view('addimage.index');
+        $albums = Album::with('user')->where('user_id',$id)->get(); 
+        return view('addimage.index',compact('albums'));
     }
 
     public function store(Request $request){

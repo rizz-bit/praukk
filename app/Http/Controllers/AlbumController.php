@@ -30,7 +30,7 @@ class AlbumController extends Controller
        $album = Album::create([
             'nama_album' => $request->nama_album,
             'deskripsi' => $request->deskripsi,
-            'tanggal_dibuat' => now()   ,
+            'tanggal_dibuat' => now(),
             'photo' => $path,
             'user_id' => Auth::user()->id,
         ]);
