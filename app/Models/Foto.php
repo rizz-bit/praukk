@@ -30,4 +30,13 @@ class Foto extends Model
         return $this->belongsTo(Album::class);
     }
 
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::creating(function ($event) {
+            $event->tanggal_unggah = now(); // Mengisi tanggal saat record dibuat
+        });
+    }
+
 }

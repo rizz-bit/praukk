@@ -10,9 +10,9 @@
      <i class="fas fa-plus text-gray-600 text-xl">
      </i>
     </a>
-    <a class="mb-5 hover:bg-gray-600/30 rounded p-2" href="{{route('album')}}">
+    {{-- <a class="mb-5 hover:bg-gray-600/30 rounded p-2" href="{{route('album')}}">
      <i class="fa-solid fa-folder text-gray-600 text-xl"></i>
-    </a>
+    </a> --}}
     <a class="relative mb-5 hover:bg-gray-600/30 rounded p-2" href="#">
      <i class="fas fa-bell text-gray-600 text-xl">
      </i>

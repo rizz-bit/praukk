@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Album;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -9,7 +10,14 @@ class ProfileController extends Controller
 {
     public function index()
     {    
-        return view('profile.index');
+        return view('profile.photo');
+    }
+    public function album($id)
+    {    
+        $albums = Album::with('user')->where('user_id', $id)->get(); 
+        // dd($albums);
+    // return view('albums', compact('albums'));
+        return view('profile.album_display',compact('albums'));
     }
 
     public function edit($id)

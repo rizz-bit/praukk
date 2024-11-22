@@ -14,8 +14,9 @@ return new class extends Migration
         Schema::create('albums', function (Blueprint $table) {
             $table->id();
             $table->string('nama_album');
+            $table->string('photo')->nullable();
             $table->string('deskripsi');
-            $table->date('tanggal_dibuat');
+            $table->date('tanggal_dibuat')->default(now());
             $table->foreignId('user_id')->constrained(table: 'users',indexName: 'albums_user_id');
             $table->timestamps();
         });

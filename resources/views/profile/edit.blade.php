@@ -5,8 +5,8 @@
     <p class="text-sm text-gray-600 mb-6">Keep your personal details private. Information you add here is visible to anyone who can view your profile.</p>
     
     <div class="flex items-center mb-6">
-        <div class="w-16 h-16 text-white flex items-center justify-center text-2xl overflow-hidden">
-            <img src="{{ auth()->user()->profile_picture ? asset('images/' . auth()->user()->profile_picture) : asset('images/default_pict.jpg') }}" class="rounded-full flex-shrink-0 min-w-full min-h-full object-cover" id="previewImage" style="">
+        <div class="w-16 h-16 text-white flex items-center justify-center text-2xl overflow-hidden rounded-full">
+            <img src="{{ auth()->user()->profile_picture ? asset('images/' . auth()->user()->profile_picture) : asset('images/default_pict.jpg') }}" class="w-full h-full object-cover" id="previewImage" style="">
         </div>
         <button onclick="openModalChange()" class="ml-4 px-4 py-2 bg-gray-200 text-gray-800 rounded-full">Change</button>
     </div>

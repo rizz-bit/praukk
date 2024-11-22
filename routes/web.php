@@ -43,3 +43,6 @@ Route::get('/profile/{id}/edit', [ProfileController::class,'edit'])->name('profi
 Route::post('/profile/{id}/update', [ProfileController::class,'update'])->name('profile.update');
 
 Route::get('/album',[AlbumController::class,'index'])->name('album');
+
+Route::post('/album/create', [AlbumController::class,'store'])->name('album.create');
+Route::get('/album/{id}', [ProfileController::class, 'album'])->name('album.show');

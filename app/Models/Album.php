@@ -15,10 +15,20 @@ class Album extends Model
         'deskripsi',
         'tanggal_dibuat',
         'user_id',
+        'photo',
     ];
 
     public function user():BelongsTo
     {
         return $this->belongsTo(User::class);
+    }
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::creating(function ($event) {
+            $event->tanggal_dibuat = now(); // Mengisi tanggal saat record dibuat
+        });
     }
 }
