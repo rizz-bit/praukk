@@ -48,4 +48,6 @@ Route::get('/album',[AlbumController::class,'index'])->name('album');
 Route::post('/album/create', [AlbumController::class,'store'])->name('album.create');
 Route::get('/album/{id}', [ProfileController::class, 'album'])->name('album.show');
 
+Route::get('/album/foto/{id}',[AlbumController::class, 'show'])->name('album.foto');
 Route::get('/add/{id}' ,[AddFotoController::class,'index'])->name('add.foto');
+Route::post('foto/add',[AddFotoController::class,'store'])->name('foto.create');

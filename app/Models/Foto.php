@@ -16,7 +16,7 @@ class Foto extends Model
         'user_id',
         'album_id',
         'tanggal_unggah',
-        'lokasi_file'
+        'lokasi_file',
         
     ];
 

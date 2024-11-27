@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Album;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Foto;
 
 class AlbumController extends Controller
 {
@@ -37,7 +38,18 @@ class AlbumController extends Controller
 
         // dd($album);
 
-        return redirect()->route('album.show', auth()->user()->id)->with('success', 'Album created successfully');
+        return redirect()->route('album.show', ['id' => auth()->user()->id, 'tab' => 'album'])->with('success', 'Album created successfully');
 
     }
+
+    public function show($id){
+        $foto = Foto::with('album')->where('album_id',$id)->get();
+        return view('album.show',compact('foto'));
+    }
+
+    // public function viewaddfoto(){
+    //     $albums = Album::where('user_id', Auth::id())->get();
+    //     return view('foto.index',compact('albums'));
+    // }
+
 }
