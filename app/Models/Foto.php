@@ -10,14 +10,14 @@ class Foto extends Model
 {
     use HasFactory;
     protected $table = 'fotos';
-    protected $guarded = [
+    protected $fillable = [
         'judul_foto',
         'deskripsi_foto',
         'user_id',
         'album_id',
         'tanggal_unggah',
         'lokasi_file',
-        
+
     ];
 
     public function user(): BelongsTo
@@ -38,5 +38,10 @@ class Foto extends Model
             $event->tanggal_unggah = now(); // Mengisi tanggal saat record dibuat
         });
     }
+
+    public function likes()
+{
+    return $this->hasMany(LikeFoto::class);
+}
 
 }

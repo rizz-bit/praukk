@@ -3,18 +3,21 @@
 namespace App\Http\Controllers;
 
 use App\Models\Album;
+use App\Models\Foto;
 use App\Models\User;
 use Illuminate\Http\Request;
 
 class ProfileController extends Controller
 {
-    public function index()
-    {    
-        return view('profile.photo');
+    public function index($id)
+    {
+        $fotos = Foto::with('user')->where('user_id',$id)->get();
+        return view('profile.photo',compact('fotos'));
+
     }
     public function album($id)
-    {    
-        $albums = Album::with('user')->where('user_id', $id)->get(); 
+    {
+        $albums = Album::with('user')->where('user_id', $id)->get();
         // dd($albums);
     // return view('albums', compact('albums'));
         return view('profile.album_display',compact('albums'));
@@ -40,7 +43,7 @@ class ProfileController extends Controller
         //     'profile_picture' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         // ]);
 
-        
+
         $user = User::findOrFail($id);
         // // Jika ada foto baru yang diupload, proses upload foto baru
         if ($request->hasFile('profile_picture')) {
@@ -48,7 +51,7 @@ class ProfileController extends Controller
                 if ($user->profile_picture && file_exists(public_path('images/' . $user->profile_picture))) {
                         unlink(public_path('images/' . $user->profile_picture));
                     }
-                
+
             // Upload foto baru
             $profile_pictureName = time() . '.' . $request->profile_picture->extension();
             $request->profile_picture->move(public_path('images'), $profile_pictureName);
@@ -56,7 +59,7 @@ class ProfileController extends Controller
                 // Jika tidak ada foto baru, gunakan foto lama
                 $profile_pictureName = $user->profile_picture;
             }
-            
+
         // Update data user
         $user->update($request->all());
         $user->profile_picture = $profile_pictureName;
@@ -64,7 +67,7 @@ class ProfileController extends Controller
 
         // dd($user);
 
-        return redirect()->route('profile')->with('success', 'Data berhasil diperbarui!');
+        return redirect()->route('profile', auth()->user()->id)->with('success', 'Data berhasil diperbarui!');
     }
 
     // public function update(Request $request, User $user){
@@ -81,7 +84,7 @@ class ProfileController extends Controller
     //         $path = $request->file('profile_picture')->store('profile_pictures', 'public');
     //         $user->profile_picture = $path;
     //     }
-        
+
     //     $user->username = $request->username;
     //     $user->nama_lengkap = $request->nama_lengkap;
     //     $user->email = $request->email;

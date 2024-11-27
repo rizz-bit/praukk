@@ -11,7 +11,7 @@ class AddFotoController extends Controller
 {
     public function index($id)
     {
-        $albums = Album::with('user')->where('user_id',$id)->get(); 
+        $albums = Album::with('user')->where('user_id',$id)->get();
         return view('addimage.index',compact('albums'));
     }
 
@@ -39,7 +39,7 @@ class AddFotoController extends Controller
             'user_id' => Auth::user()->id,
         ]);
 
-        dd($album);
+        // dd($album);
 
         return redirect()->route('profile', ['id' => auth()->user()->id, 'tab' => 'created'])->with('success', 'Album created successfully');
 

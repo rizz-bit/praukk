@@ -3,6 +3,7 @@
 use App\Http\Controllers\AddFotoController;
 use App\Http\Controllers\AlbumController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -26,12 +27,14 @@ use Illuminate\Support\Facades\Route;
 //     return view('signin');
 // })->name('register');
 
-Route::get('/', function () {
-    return view('maincontain.index');
-})->name('home');
+// Route::get('/', function () {
+//     return view('maincontain.index');
+// })->name('home');
 // Route::get('/add', function () {
 //     return view('addimage.index');
 // })->name('add');
+
+Route::get('/',[HomeController::class,'index'])->name('home');
 
 Route::post('/login-post', [AuthController::class, 'loginPost'])->name('login.post');
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
@@ -39,7 +42,7 @@ Route::post('/register-post', [AuthController::class, 'registerPost'])->name('re
 
 Route::post('/logout',[AuthController::class,'logout'])->name('logout');
 
-Route::get('/profile', [ProfileController::class,'index'])->name('profile');
+Route::get('/profile/{id}', [ProfileController::class,'index'])->name('profile');
 Route::get('/profile/{id}/edit', [ProfileController::class,'edit'])->name('profile.edit');
 Route::post('/profile/{id}/update', [ProfileController::class,'update'])->name('profile.update');
 
@@ -51,3 +54,9 @@ Route::get('/album/{id}', [ProfileController::class, 'album'])->name('album.show
 Route::get('/album/foto/{id}',[AlbumController::class, 'show'])->name('album.foto');
 Route::get('/add/{id}' ,[AddFotoController::class,'index'])->name('add.foto');
 Route::post('foto/add',[AddFotoController::class,'store'])->name('foto.create');
+
+Route::get('/foto/{id}',[HomeController::class, 'foto'])->name('foto'); 
+use App\Http\Controllers\LikeController;
+
+Route::post('/like/{postId}', [LikeController::class, 'toggleLike'])->name('like.toggle');
+

@@ -4,11 +4,31 @@
     <i class="fas fa-plus text-2xl mr-8">
     </i>
 </a>
- <div class="w-1/4">
-      <img alt="Screenshot of a web page" class="w-full" height="100" src="https://storage.googleapis.com/a1aa/image/WhWIixmZ3yIjBt7r3HCbq3ovhcqNeLliif77eZrJNjPozKinA.jpg" width="150"/>
-     </div>
-     <div class="w-1/4">
-      <img alt="Another screenshot of a web page" class="w-full" height="100" src="https://storage.googleapis.com/a1aa/image/X7HZDG3OXbLgKRvzPuVEVZM6znf8mqTAx9gyxq0IdCDuti4JA.jpg" width="150"/>
-     </div>
+
+<div class="grid grid-cols-3 gap-4">
+    @foreach ($fotos as $foto)
+    <div class="bg-white rounded-lg overflow-hidden shadow-md">
+        <a href="">
+
+            <img alt="" class="w-full rounded" height="100" src="{{ asset('storage/' . $foto->lokasi_file) }}" width="150"/>
+        </a>
+
     </div>
+    @endforeach
+</div>
+
+{{-- <div class="grid grid-cols-3 gap-3">
+    <div class="bg-grey-600 h-full w-full">
+        <a href="">
+            <img alt="" class="w-full rounded" height="100" src="{{ asset('storage/' . $foto->lokasi_file) }}" width="150"/>
+        </a>
+    </div>
+  </div> --}}
+
+{{-- <div class="w-1/4">
+    <a href="">
+
+        <img alt="" class="w-full" height="100" src="{{ asset('storage/' . $foto->lokasi_file) }}" width="150"/>
+    </a>
+    </div> --}}
 @endsection

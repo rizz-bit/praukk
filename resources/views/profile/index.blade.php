@@ -24,15 +24,15 @@
     </div>
     <div class="">
         <div x-data="{ activeTab: '{{ request('tab', 'created') }}' }" class="flex space-x-8 mb-4">
-            <a href="{{ route('profile', ['tab' => 'created']) }}" 
-               @click="activeTab = 'created'" 
-               :class="{'border-b-2 border-black pb-1': activeTab === 'created', 'text-black': activeTab === 'created', 'text-gray-500': activeTab !== 'created'}" 
+            <a href="{{ route('profile', auth()->user()->id , ['tab' => 'created']) }}"
+               @click="activeTab = 'created'"
+               :class="{'border-b-2 border-black pb-1': activeTab === 'created', 'text-black': activeTab === 'created', 'text-gray-500': activeTab !== 'created'}"
                class="transition duration-300">
                 Created
             </a>
-            <a href="{{ route('album.show', ['id' => auth()->user()->id, 'tab' => 'album']) }}" 
-               @click="activeTab = 'album'" 
-               :class="{'border-b-2 border-black pb-1': activeTab === 'album', 'text-black': activeTab === 'album', 'text-gray-500': activeTab !== 'album'}" 
+            <a href="{{ route('album.show', ['id' => auth()->user()->id, 'tab' => 'album']) }}"
+               @click="activeTab = 'album'"
+               :class="{'border-b-2 border-black pb-1': activeTab === 'album', 'text-black': activeTab === 'album', 'text-gray-500': activeTab !== 'album'}"
                class="transition duration-300">
                 Album
             </a>

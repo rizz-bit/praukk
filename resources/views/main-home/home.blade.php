@@ -152,6 +152,31 @@
     });
     
 </script>
+    <script>
+    function toggleLike(postId) {
+        fetch(`/like/${postId}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': '{{ csrf_token() }}',
+            },
+        })
+        .then(response => response.json())
+        .then(data => {
+            // Update Icon
+            let button = document.getElementById(`like-button-${postId}`);
+            let countElement = document.getElementById(`like-count-${postId}`);
+            if (data.status === 'liked') {
+                button.innerHTML = `<i class="fas fa-heart text-red-500 text-2xl"></i>`;
+                countElement.textContent = parseInt(countElement.textContent) + 1;
+            } else {
+                button.innerHTML = `<i class="far fa-heart text-gray-500 text-2xl"></i>`;
+                countElement.textContent = parseInt(countElement.textContent) - 1;
+            }
+        });
+    }
+</script>
+
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.0/dist/sweetalert2.all.min.js"></script>
 </html>
 

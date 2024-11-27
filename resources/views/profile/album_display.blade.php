@@ -16,7 +16,7 @@
                         <p class="text-gray-600">{{ $album->deskripsi }}</p>
                     </div>
                 </a>
-                <a href="{{ route('album.show', $album->id) }}" class="block p-4 text-center text-white bg-blue-500 hover:bg-blue-600 rounded-b-lg">
+                <a href="{{ route('album.foto', $album->id) }}" class="block p-4 text-center text-white bg-blue-500 hover:bg-blue-600 rounded-b-lg">
                     Lihat Album
                 </a>
             </div>

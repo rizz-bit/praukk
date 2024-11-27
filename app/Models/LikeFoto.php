@@ -20,4 +20,13 @@ class LikeFoto extends Model
     {
         return $this->belongsTo(Foto::class, 'foto_id');
     }   
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::creating(function ($event) {
+            $event->tanggal_like = now(); // Mengisi tanggal saat record dibuat
+        });
+    }
 }
