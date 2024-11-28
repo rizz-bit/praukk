@@ -7,6 +7,7 @@
   </script>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" rel="stylesheet"/>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.5.10/dist/sweetalert2.min.css" rel="stylesheet">
   <script src="//unpkg.com/alpinejs" defer></script>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.1.2/dist/tailwind.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.0/dist/sweetalert2.min.css">
@@ -93,17 +94,22 @@
     </script>
  </head>
  <body class="bg-gray-100">
+    
   <div class="flex">
    <!-- Sidebar -->
    @include('partials.sidebar_left')
    <!-- Main Content -->
    <div class="flex-1 p-4">
     <!-- Search Bar -->
-    <div class="flex items-center bg-gray-200 rounded-full px-4 py-2 mb-4">
-        <i class="fas fa-search text-gray-500"></i>
-        <input type="text" placeholder="Search" class="bg-gray-200 outline-none ml-2 w-full">
-    </div>
-    
+    <form action="{{ route('home') }}" method="GET" class="flex flex-row items-center mb-4">
+
+        <div class="flex items-center bg-gray-200 rounded-full w-full px-4 py-2 ">
+            <i class="fas fa-search text-gray-500"></i>
+            <input type="text" name="search" placeholder="Search" value="{{ request('search') }}" class="bg-gray-200 outline-none ml-2 w-full">
+        </div>
+        <button type="submit" class="bg-gray-800 text-white rounded-full px-4 py-2 ml-2">Search</button>
+        
+    </form>
     @yield('content')
     
     @include('partials.sidebar_right')
@@ -111,7 +117,7 @@
   </div>
 @include('auth.login')
 @include('auth.signin')
- 
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.5.10/dist/sweetalert2.all.min.js"></script>
  </body>
  @stack('scripts')
  <script>
@@ -177,6 +183,7 @@
     }
 </script>
 
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.0/dist/sweetalert2.all.min.js"></script>
+
+
 </html>
 

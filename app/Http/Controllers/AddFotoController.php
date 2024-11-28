@@ -6,6 +6,7 @@ use App\Models\Album;
 use App\Models\Foto;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class AddFotoController extends Controller
 {
@@ -43,5 +44,20 @@ class AddFotoController extends Controller
 
         return redirect()->route('profile', ['id' => auth()->user()->id, 'tab' => 'created'])->with('success', 'Album created successfully');
 
+    }
+    public function destroy($id)
+    {
+        $image = Foto::findOrFail($id);
+        $image->komentar()->delete();
+        $image->likes()->delete();
+        
+        if($image->lokasi_file && Storage::exists('public/' . $image->lokasi_file)) {
+            Storage::delete('public/' . $image->lokasi_file);
+        }
+
+        $image->delete();
+
+        
+        return redirect()->route('profile', auth()->user()->id);
     }
 }

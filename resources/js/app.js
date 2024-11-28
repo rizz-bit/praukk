@@ -1,3 +1,8 @@
 import './bootstrap';
+// Mengimpor SweetAlert2
+// Mengimpor SweetAlert2
 import Swal from 'sweetalert2';
-window.Swal = Swal;
+
+// Menampilkan SweetAlert
+window.Swal = Swal; 
+

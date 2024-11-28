@@ -28,7 +28,7 @@
                @click="activeTab = 'created'"
                :class="{'border-b-2 border-black pb-1': activeTab === 'created', 'text-black': activeTab === 'created', 'text-gray-500': activeTab !== 'created'}"
                class="transition duration-300">
-                Created
+                Foto
             </a>
             <a href="{{ route('album.show', ['id' => auth()->user()->id, 'tab' => 'album']) }}"
                @click="activeTab = 'album'"

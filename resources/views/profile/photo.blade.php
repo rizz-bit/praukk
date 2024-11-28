@@ -10,7 +10,7 @@
     <div class="bg-white rounded-lg overflow-hidden shadow-md">
         <a href="">
 
-            <img alt="" class="w-full rounded" height="100" src="{{ asset('storage/' . $foto->lokasi_file) }}" width="150"/>
+            <img alt="" class="w-full h-64 object-cover rounded-lg shadow-lg transition duration-200 ease-in-out group-hover:scale-110" height="100" src="{{ asset('storage/' . $foto->lokasi_file) }}" width="150"/>
         </a>
 
     </div>

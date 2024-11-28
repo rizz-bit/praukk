@@ -8,6 +8,7 @@ use App\Http\Controllers\KomentarController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\LikeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -57,8 +58,8 @@ Route::get('/add/{id}' ,[AddFotoController::class,'index'])->name('add.foto');
 Route::post('foto/add',[AddFotoController::class,'store'])->name('foto.create');
 
 Route::get('/foto/{id}',[HomeController::class, 'foto'])->name('foto'); 
-use App\Http\Controllers\LikeController;
 
 Route::post('/like/{postId}', [LikeController::class, 'toggleLike'])->name('like.toggle');
 Route::post('/photos/{photo}/komentar', [KomentarController::class, 'store'])->name('komentar');
+Route::delete('/images/{id}', [AddFotoController::class, 'destroy'])->name('images.destroy');
 

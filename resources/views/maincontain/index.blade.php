@@ -11,16 +11,38 @@
     </a>
     @endforeach
 </div> --}}
+
 <div class="grid grid-cols-6 gap-4">
     <!-- Example Photos -->
+    @if ($photo->isNotEmpty())
+
     @foreach ($photo as $photos)
         
     <a href="{{route('foto' , $photos->id)}}">
         <div class="relative group">
-            <img src="{{ asset('storage/' . $photos->lokasi_file) }}" alt="Photo 1" class="w-full h-64 object-cover rounded-lg shadow-lg transition duration-200 ease-in-out group-hover:scale-110">
+            <img src="{{ asset('storage/' . $photos->lokasi_file) }}" alt="{{ $photos->judul_foto }}" class="w-full h-64 object-cover rounded-lg shadow-lg transition duration-200 ease-in-out group-hover:scale-110">
         </div>
     </a>
     @endforeach
+    
+    @else
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            Swal.fire({
+                icon: 'error',
+                title: 'No Photos Found',
+                text: 'There were no photos found matching your search.',
+                confirmButtonText: 'OK'
+            });
+        });
+    </script>
+        <div class="flex">
+            <p class="text-2xl text-gray-600 font-semibold ">Not Found.</p>
+        </div>
+        
 
+    @endif
+
+    {{-- {{ $photo->links() }} --}}
 </div>
   @endsection
