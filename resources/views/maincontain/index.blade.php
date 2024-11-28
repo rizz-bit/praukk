@@ -1,6 +1,6 @@
 @extends('main-home.home')
 @section('content')
-<div class="grid grid-cols-6 gap-4">
+{{-- <div class="grid grid-cols-6 gap-4">
     @foreach ($photo as $photos)
 
     <a href="{{ route('foto' , $photos->id) }}" class="bg-white rounded-lg overflow-hidden shadow-md block relative group hover:cursor-pointer">
@@ -10,5 +10,17 @@
         </button>
     </a>
     @endforeach
+</div> --}}
+<div class="grid grid-cols-6 gap-4">
+    <!-- Example Photos -->
+    @foreach ($photo as $photos)
+        
+    <a href="{{route('foto' , $photos->id)}}">
+        <div class="relative group">
+            <img src="{{ asset('storage/' . $photos->lokasi_file) }}" alt="Photo 1" class="w-full h-64 object-cover rounded-lg shadow-lg transition duration-200 ease-in-out group-hover:scale-110">
+        </div>
+    </a>
+    @endforeach
+
 </div>
   @endsection

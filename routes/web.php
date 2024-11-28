@@ -4,6 +4,7 @@ use App\Http\Controllers\AddFotoController;
 use App\Http\Controllers\AlbumController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\KomentarController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -59,4 +60,5 @@ Route::get('/foto/{id}',[HomeController::class, 'foto'])->name('foto');
 use App\Http\Controllers\LikeController;
 
 Route::post('/like/{postId}', [LikeController::class, 'toggleLike'])->name('like.toggle');
+Route::post('/photos/{photo}/komentar', [KomentarController::class, 'store'])->name('komentar');
 

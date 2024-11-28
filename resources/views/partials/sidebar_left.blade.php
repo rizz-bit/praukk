@@ -13,17 +13,17 @@
     {{-- <a class="mb-5 hover:bg-gray-600/30 rounded p-2" href="{{route('album')}}">
      <i class="fa-solid fa-folder text-gray-600 text-xl"></i>
     </a> --}}
-    <a class="relative mb-5 hover:bg-gray-600/30 rounded p-2" href="#">
+    {{-- <a class="relative mb-5 hover:bg-gray-600/30 rounded p-2" href="#">
      <i class="fas fa-bell text-gray-600 text-xl">
      </i>
      <!-- <span class="absolute top-0 right-0 bg-red-600 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
       20
      </span> -->
-    </a>
-    <a href="#" class="hover:bg-gray-600/30 rounded p-2 mb-5">
+    </a> --}}
+    {{-- <a href="#" class="hover:bg-gray-600/30 rounded p-2 mb-5">
      <i class="fas fa-comment-dots text-gray-600 text-xl">
      </i>
-    </a>
+    </a> --}}
     @if(auth()->user())
     <div class="relative" x-data="{ open: false }">
         <!-- Button -->

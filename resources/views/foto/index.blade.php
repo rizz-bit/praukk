@@ -5,17 +5,25 @@
      <div class="bg-white shadow rounded-lg p-4">
       <div class="flex justify-between items-center">
        <div class="flex items-center space-x-2">
-        <i class="fas fa-arrow-left text-gray-700">
-        </i>
+        <a href="{{route('home')}}">
+            <i class="fas fa-arrow-left text-gray-700">
+            </i>
+        </a>
         <div class="text-gray-700">
-         Nandho Aryuda
+            <img src="{{ $photo->user->profile_picture ? asset('images/' . $photo->user->profile_picture) : asset('images/default_pict.jpg') }}"
+            alt="Foto Profil"
+            class="profile-picture"
+            style="width: 30; height: 30; border-radius: 50%;">
+        </div>
+        <div class="text-gray-700">
+            {{$photo->user->username}}
         </div>
        </div>
        <div class="flex items-center space-x-2">
         <button class="bg-red-600 text-white px-4 py-1 rounded-full">
          Simpan
         </button>
-        <div class="relative">
+        {{-- <div class="relative">
          <button class="text-gray-700">
           Profil
           <i class="fas fa-caret-down">
@@ -29,7 +37,7 @@
            Option 2
           </a>
          </div>
-        </div>
+        </div> --}}
        </div>
       </div>
       <div class="mt-4">
@@ -57,18 +65,73 @@
         </form>
 
         <!-- Jumlah Like -->
-        <span class="ml-2 text-gray-600">
-            {{ $photo->likes->count() }}
-        </span> likes
+        <span class="ml-2 mb-4 text-gray-600">
+            {{ $photo->likes->count() }} Like
+        </span> 
+
     </div>
-       <i class="fas fa-comment text-gray-700">
-       </i>
-       <span class="text-gray-700">
-        1 Komentar
-       </span>
+    <div x-data="{ open: false }" class="relative flex content-center w-full">
+        <button 
+            @click="open = !open"
+            class=""
+        >
+        <i class="fas fa-comment text-gray-500 text-2xl">
+        </i>
+        <span class="text-gray-600 ml-1 mb-4">
+           {{$photo->komentar->count()}} Komentar
+        </span>
+        </button>
+    
+        <!-- Comments Section -->
+        <div 
+            x-show="open" 
+            @click.away="open = false" 
+            x-transition 
+            class="absolute bg-white border rounded shadow-lg mt-10 w-full p-4"
+        >
+            <h2 class="text-lg font-bold mb-4">Comments</h2>
+    
+            <!-- List Comments -->
+            <div class="space-y-4">
+                @foreach ($photo->komentar as $comment)
+                    <div class="border-b pb-2 flex flex-col space-x-2">
+                        <div class="flex flex-row items-center mb-2">
+                            <img src="{{ $comment->user->profile_picture ? asset('images/' . $comment->user->profile_picture) : asset('images/default_pict.jpg') }}" class="rounded-full mb-2 h-8 w-8 object-cover">
+                            <strong class="text-blue-600 ml-2 ">{{ $comment->user->username }}</strong>
+                        </div>
+                        <p>{{ $comment->isi_komentar }}</p>
+                        <small class="text-gray-500">{{ $comment->created_at->diffForHumans() }}</small>
+                    </div>
+                @endforeach
+            </div>
+    
+            <!-- Add Comment Form -->
+            @auth
+            <form action="{{ route('komentar' , $photo->id) }}" method="POST" class="mt-4">
+                @csrf
+                <textarea 
+                    name="isi_komentar" 
+                    rows="2" 
+                    class="w-full border rounded p-2" 
+                    placeholder="Write a comment..." 
+                    required></textarea>
+                    <div class="mb-4">
+                        {{-- <label class="block text-gray-600">Tanggal</label> --}}
+                        <input type="date" name="tanggal_dibuat" class="hidden w-full border border-gray-300 rounded-lg p-2" value="{{ now()->format('Y-m-d') }}">
+                    </div>
+                <button 
+                    type="submit" 
+                    class="bg-red-500 text-white px-4 py-2 rounded mt-2"
+                >
+                    Post
+                </button>
+            </form>
+            @endauth
+        </div>
+    </div>
       </div>
       <div class="mt-4">
-       <input class="w-full border rounded-full px-4 py-2" placeholder="Tambahkan komentar" type="text"/>
+        
       </div>
      </div>
     </div>

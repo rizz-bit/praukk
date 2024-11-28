@@ -28,5 +28,14 @@ class KomentarFoto extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::creating(function ($event) {
+            $event->tanggal_komentar = now(); // Mengisi tanggal saat record dibuat
+        });
+    }
     
 }
